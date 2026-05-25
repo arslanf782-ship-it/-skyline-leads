@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Skyline Acquisition Group — Get Connected</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Rajdhani:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:         #060e18;
+  --surface:    #0c1a2e;
+  --card:       #0f2138;
+  --sky:        #0ea5e9;
+  --sky-dim:    rgba(14,165,233,0.15);
+  --sky-glow:   rgba(14,165,233,0.25);
+  --white:      #f0f6fc;
+  --text-muted: rgba(240,246,252,0.5);
+  --text-muted2:rgba(240,246,252,0.3);
+  --border:     rgba(14,165,233,0.18);
+  --green:      #22c55e;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Lato', sans-serif;
+  background: var(--bg);
+  color: var(--white);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── BACKGROUND ── */
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 100% 55% at 50% 0%, #0c2d5a 0%, #0a1e3d 30%, #060e18 60%, transparent 100%),
+    linear-gradient(180deg, #0a1e3d 0%, #081428 18%, #060e18 48%, #060e18 100%);
+}
+
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(14,165,233,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14,165,233,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, transparent 50%);
+}
+
+/* ── LAYOUT ── */
+.page {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px 56px;
+}
+
+/* ── HEADER ── */
+header {
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+  padding: 52px 0 36px;
+  animation: fadeDown 0.7s ease both;
+}
+
+.logo-mark {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 38px;
+  margin-bottom: 12px;
+}
+.logo-mark span {
+  border-radius: 2px 2px 0 0;
+  display: block;
+}
+.logo-mark span:nth-child(1) { width:7px; height:16px; background:rgba(14,165,233,0.35); }
+.logo-mark span:nth-child(2) { width:7px; height:24px; background:rgba(14,165,233,0.5); }
+.logo-mark span:nth-child(3) { width:9px; height:36px; background:var(--sky); }
+.logo-mark span:nth-child(4) { width:7px; height:28px; background:rgba(14,165,233,0.55); }
+.logo-mark span:nth-child(5) { width:7px; height:20px; background:rgba(14,165,233,0.35); }
+
+.brand-name {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 46px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: #ffffff;
+  line-height: 1;
+  text-shadow: 0 2px 16px rgba(14,165,233,0.25);
+}
+.brand-name em {
+  color: var(--sky);
+  font-style: normal;
+}
+
+.brand-sub {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: rgba(14,165,233,0.6);
+  margin-top: 8px;
+}
+
+.header-rule {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 18px auto 0;
+  width: 240px;
+}
+.header-rule .rl { flex:1; height:1px; background:linear-gradient(to right,transparent,rgba(14,165,233,0.4)); }
+.header-rule .rr { flex:1; height:1px; background:linear-gradient(to left,transparent,rgba(14,165,233,0.4)); }
+.header-rule .rd { width:5px; height:5px; background:var(--sky); transform:rotate(45deg); opacity:0.8; }
+
+/* ── HERO TEXT ── */
+.hero {
+  max-width: 680px;
+  text-align: center;
+  margin-bottom: 36px;
+  animation: fadeUp 0.7s 0.15s ease both;
+}
+
+.hero h1 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  font-size: 30px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #ffffff;
+  line-height: 1.3;
+  margin-bottom: 16px;
+  text-shadow: 0 2px 12px rgba(14,165,233,0.2);
+}
+.hero h1 span { color: var(--sky); }
+
+.hero p {
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+.trust-row {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+.trust-badge {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(240,246,252,0.7);
+  background: rgba(14,165,233,0.06);
+  border: 1px solid var(--sky-dim);
+  border-radius: 20px;
+  padding: 5px 14px 5px 10px;
+  backdrop-filter: blur(4px);
+}
+.trust-badge .dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--sky);
+  flex-shrink: 0;
+}
+
+/* ── FORM CARD ── */
+.form-card {
+  width: 100%;
+  max-width: 580px;
+  background: var(--card);
+  border: 1px solid var(--sky-dim);
+  border-radius: 20px;
+  padding: 40px 44px 36px;
+  box-shadow:
+    0 4px 6px rgba(0,0,0,0.2),
+    0 24px 64px rgba(0,0,0,0.4),
+    0 0 0 1px rgba(14,165,233,0.08);
+  animation: fadeUp 0.7s 0.25s ease both;
+  position: relative;
+  overflow: hidden;
+}
+
+.form-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(to right, transparent, var(--sky), transparent);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 20px;
+}
+.form-grid .full { grid-column: 1 / -1; }
+
+.field label {
+  display: block;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 7px;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  background: rgba(14,165,233,0.04);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 13px 16px;
+  color: var(--white);
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.field input::placeholder { color: var(--text-muted2); }
+.field input:focus,
+.field select:focus {
+  border-color: var(--sky);
+  box-shadow: 0 0 0 3px rgba(14,165,233,0.1);
+}
+.field select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%230ea5e9' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-color: rgba(14,165,233,0.04);
+  padding-right: 40px;
+  color: var(--text-muted2);
+}
+.field select option { background: var(--surface); color: var(--white); }
+.field select.filled { color: var(--white); }
+
+/* ── CONSENT CHECKBOX ── */
+.consent-row {
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  margin-top:20px;
+  cursor:pointer;
+}
+.consent-row input[type="checkbox"] {
+  appearance:none;
+  -webkit-appearance:none;
+  width:18px;
+  height:18px;
+  min-width:18px;
+  border:1.5px solid var(--border);
+  border-radius:4px;
+  background:rgba(14,165,233,0.04);
+  cursor:pointer;
+  margin-top:1px;
+  transition:border-color .2s,background .2s;
+  position:relative;
+}
+.consent-row input[type="checkbox"]:checked {
+  background:var(--sky);
+  border-color:var(--sky);
+}
+.consent-row input[type="checkbox"]:checked::after {
+  content:'✓';
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:12px;
+  font-weight:700;
+}
+.consent-row label {
+  font-size:12px;
+  color:var(--text-muted);
+  line-height:1.5;
+  cursor:pointer;
+  letter-spacing:0;
+  text-transform:none;
+  font-family:'Lato',sans-serif;
+  font-weight:400;
+}
+.consent-row label a {
+  color:var(--sky);
+  text-decoration:none;
+}
+.consent-row label a:hover {
+  text-decoration:underline;
+}
+
+.submit-btn {
+  width: 100%;
+  margin-top: 24px;
+  padding: 18px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #38bdf8 0%, #0ea5e9 40%, #0284c7 100%);
+  color: #ffffff;
+  font-family: 'Oswald', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: filter 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow:
+    0 2px 0 rgba(255,255,255,0.12) inset,
+    0 -2px 0 rgba(0,0,0,0.25) inset,
+    0 6px 28px rgba(14,165,233,0.35),
+    0 2px 8px rgba(0,0,0,0.3);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  position: relative;
+  overflow: hidden;
+}
+.submit-btn::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, transparent 100%);
+  border-radius: 12px 12px 0 0;
+  pointer-events: none;
+}
+.submit-btn:hover {
+  filter: brightness(1.1);
+  box-shadow:
+    0 2px 0 rgba(255,255,255,0.12) inset,
+    0 -2px 0 rgba(0,0,0,0.25) inset,
+    0 10px 36px rgba(14,165,233,0.45),
+    0 2px 10px rgba(0,0,0,0.3);
+  transform: translateY(-1px);
+}
+.submit-btn:active { transform: scale(0.99); filter: brightness(0.97); }
+.submit-btn:disabled { opacity:.6; cursor:not-allowed; transform:none; filter:none; }
+
+/* ── TIMER OVERLAY ── */
+.timer-overlay {
+  display:none;
+  position:absolute;
+  inset:0;
+  background:rgba(6,14,24,0.97);
+  backdrop-filter:blur(16px);
+  z-index:10;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  border-radius:20px;
+  text-align:center;
+  padding:2.5rem 2rem;
+}
+.timer-overlay.active { display:flex; }
+
+.timer-ring-wrap {
+  position:relative;
+  width:160px;
+  height:160px;
+  margin-bottom:1.8rem;
+}
+.timer-ring-glow {
+  position:absolute;
+  inset:-12px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(14,165,233,0.15) 0%,transparent 70%);
+  animation:pulseGlow 2s ease-in-out infinite;
+}
+@keyframes pulseGlow {
+  0%,100%{ opacity:0.5; transform:scale(0.95); }
+  50%{ opacity:1; transform:scale(1.05); }
+}
+.timer-ring {
+  width:160px;
+  height:160px;
+  position:relative;
+}
+.timer-ring svg { transform:rotate(-90deg); }
+.timer-ring circle { fill:none; }
+.timer-ring .bg { stroke:rgba(14,165,233,0.08); stroke-width:4; }
+.timer-ring .track { stroke:rgba(14,165,233,0.15); stroke-width:4; stroke-dasharray:4 8; }
+.timer-ring .progress {
+  stroke:url(#skyGradient);
+  stroke-width:5;
+  stroke-linecap:round;
+  transition:stroke-dashoffset 1s linear;
+  filter:drop-shadow(0 0 8px rgba(14,165,233,0.5));
+}
+.timer-seconds {
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+.timer-seconds .num {
+  font-family:'Oswald',sans-serif;
+  font-size:3.2rem;
+  font-weight:700;
+  color:var(--white);
+  line-height:1;
+  background:linear-gradient(180deg,#ffffff 30%,var(--sky));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.timer-seconds .unit {
+  font-family:'Rajdhani',sans-serif;
+  font-size:0.65rem;
+  font-weight:600;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--sky);
+  margin-top:2px;
+}
+
+.timer-title {
+  font-family:'Oswald',sans-serif;
+  font-size:1.15rem;
+  font-weight:600;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--white);
+  margin-bottom:0.6rem;
+}
+.timer-sub {
+  font-size:0.82rem;
+  color:var(--text-muted);
+  max-width:300px;
+  line-height:1.6;
+  margin-bottom:1.8rem;
+}
+
+.timer-steps {
+  display:flex;
+  gap:2rem;
+  margin-top:0;
+}
+.timer-step {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+}
+.timer-step .step-dot {
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  border:1.5px solid rgba(14,165,233,0.3);
+  background:transparent;
+  transition:all 0.4s ease;
+  position:relative;
+}
+.timer-step .step-dot.active {
+  background:var(--sky);
+  border-color:var(--sky);
+  box-shadow:0 0 10px rgba(14,165,233,0.4);
+}
+.timer-step .step-dot.done {
+  background:var(--green);
+  border-color:var(--green);
+  box-shadow:0 0 10px rgba(34,197,94,0.3);
+}
+.timer-step .step-label {
+  font-family:'Rajdhani',sans-serif;
+  font-size:0.6rem;
+  font-weight:600;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:var(--text-muted2);
+  transition:color 0.4s;
+}
+.timer-step .step-label.active { color:var(--sky); }
+.timer-step .step-label.done { color:var(--green); }
+.step-line {
+  width:30px;
+  height:1.5px;
+  background:rgba(14,165,233,0.15);
+  margin-top:5px;
+  position:relative;
+  overflow:hidden;
+}
+.step-line .fill {
+  position:absolute;
+  inset:0;
+  background:var(--sky);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform 0.6s ease;
+}
+.step-line .fill.active { transform:scaleX(1); }
+
+/* ── SUCCESS STATE ── */
+.success-msg {
+  display: none;
+  text-align: center;
+  padding: 20px 0 10px;
+}
+.success-msg .check {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: rgba(34,197,94,0.1);
+  border: 2px solid var(--green);
+  display: flex; align-items:center; justify-content:center;
+  margin: 0 auto 16px;
+  font-size: 26px;
+  box-shadow: 0 4px 20px rgba(34,197,94,0.2);
+  animation: pop 0.4s ease;
+}
+@keyframes pop{0%{transform:scale(0)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+.success-msg h3 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 22px;
+  letter-spacing: 2px;
+  color: var(--green);
+  margin-bottom: 8px;
+}
+.success-msg p {
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.uuid-box {
+  display:inline-block;
+  background:rgba(14,165,233,0.06);
+  border:1.5px solid var(--sky-dim);
+  border-radius:10px;
+  padding:10px 18px;
+  font-family:'Courier New',monospace;
+  font-size:13px;
+  color:var(--sky);
+  word-break:break-all;
+  margin:14px auto 8px;
+  user-select:all;
+  cursor:pointer;
+  transition:border-color .2s;
+}
+.uuid-box:hover { border-color:var(--sky); }
+.uuid-hint {
+  font-size:11px;
+  color:var(--text-muted2);
+  margin-bottom:18px;
+}
+.btn-reset {
+  padding:10px 28px;
+  border:1.5px solid var(--sky-dim);
+  border-radius:10px;
+  background:transparent;
+  color:var(--sky);
+  font-family:'Oswald',sans-serif;
+  font-size:14px;
+  font-weight:600;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:background .2s,border-color .2s;
+}
+.btn-reset:hover { background:rgba(14,165,233,0.08); border-color:var(--sky); }
+
+/* ── DISCLAIMER ── */
+.disclaimer {
+  max-width: 580px;
+  width: 100%;
+  margin-top: 20px;
+  padding: 16px 20px;
+  background: rgba(14,165,233,0.04);
+  border: 1px solid var(--sky-dim);
+  border-radius: 10px;
+  animation: fadeUp 0.7s 0.4s ease both;
+  backdrop-filter: blur(8px);
+}
+.disclaimer p {
+  font-family: 'Lato', sans-serif;
+  font-size: 11.5px;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+.disclaimer p strong {
+  color: var(--sky);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* ── FOOTER ── */
+footer {
+  margin-top: 36px;
+  text-align: center;
+  animation: fadeUp 0.7s 0.5s ease both;
+}
+footer p {
+  font-size: 11px;
+  color: var(--text-muted2);
+  letter-spacing: 1px;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeDown {
+  from { opacity:0; transform:translateY(-20px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(24px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 560px) {
+  .brand-name { font-size: 30px; letter-spacing: 3px; }
+  .form-card { padding: 28px 22px 24px; }
+  .form-grid { grid-template-columns: 1fr; }
+  .form-grid .full { grid-column: 1; }
+  .hero h1 { font-size: 22px; }
+  .hero p { font-size: 15px; }
+  .trust-badge { font-size: 11px; }
+}
+</style>
+</head>
+<body>
+
+<div class="bg-layer"></div>
+<div class="bg-grid"></div>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo-mark">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="brand-name">Sky<em>line</em></div>
+    <div class="brand-sub">Acquisition Group</div>
+    <div class="header-rule">
+      <div class="rl"></div><div class="rd"></div><div class="rr"></div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>Get Connected With a <span>Licensed Specialist</span> Today</h1>
+    <p>Explore available options, benefits, and personalized quotes tailored to your needs. Fill out the short form below to receive a call and speak with the right licensed agent in your area.</p>
+    <div class="trust-row">
+      <div class="trust-badge"><div class="dot"></div>Free Consultation</div>
+      <div class="trust-badge"><div class="dot"></div>Licensed Agents</div>
+      <div class="trust-badge"><div class="dot"></div>No Obligation</div>
+      <div class="trust-badge"><div class="dot"></div>Personalized Quotes</div>
+    </div>
+  </div>
+
+  <!-- FORM CARD -->
+  <div class="form-card">
+
+    <div id="formContent">
+      <div class="form-grid">
+
+        <div class="field">
+          <label>First Name</label>
+          <input type="text" id="firstName" placeholder="John" autocomplete="given-name"/>
+        </div>
+
+        <div class="field">
+          <label>Last Name</label>
+          <input type="text" id="lastName" placeholder="Doe" autocomplete="family-name"/>
+        </div>
+
+        <div class="field">
+          <label>Phone Number</label>
+          <input type="tel" id="phone" placeholder="(555) 123-4567" autocomplete="tel"/>
+        </div>
+
+        <div class="field">
+          <label>Zip Code</label>
+          <input type="text" id="zip" placeholder="10001" maxlength="5"/>
+        </div>
+
+        <div class="field full">
+          <label>State</label>
+          <select id="state" onchange="this.classList.add('filled')">
+            <option value="" disabled selected>Select state</option>
+            <option>Alabama</option><option>Alaska</option><option>Arizona</option>
+            <option>Arkansas</option><option>California</option><option>Colorado</option>
+            <option>Connecticut</option><option>Delaware</option><option>Florida</option>
+            <option>Georgia</option><option>Hawaii</option><option>Idaho</option>
+            <option>Illinois</option><option>Indiana</option><option>Iowa</option>
+            <option>Kansas</option><option>Kentucky</option><option>Louisiana</option>
+            <option>Maine</option><option>Maryland</option><option>Massachusetts</option>
+            <option>Michigan</option><option>Minnesota</option><option>Mississippi</option>
+            <option>Missouri</option><option>Montana</option><option>Nebraska</option>
+            <option>Nevada</option><option>New Hampshire</option><option>New Jersey</option>
+            <option>New Mexico</option><option>New York</option><option>North Carolina</option>
+            <option>North Dakota</option><option>Ohio</option><option>Oklahoma</option>
+            <option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option>
+            <option>South Carolina</option><option>South Dakota</option><option>Tennessee</option>
+            <option>Texas</option><option>Utah</option><option>Vermont</option>
+            <option>Virginia</option><option>Washington</option><option>West Virginia</option>
+            <option>Wisconsin</option><option>Wyoming</option>
+          </select>
+        </div>
+
+        <div class="field full">
+          <label>Campaign</label>
+          <select id="campaign" onchange="this.classList.add('filled')">
+            <option value="" disabled selected>Select campaign</option>
+            <option>Medicare</option>
+            <option>Final Expense</option>
+            <option>Home Security</option>
+            <option>ACA</option>
+          </select>
+        </div>
+
+      </div>
+
+      <div class="consent-row" onclick="document.getElementById('consent').click()">
+        <input type="checkbox" id="consent" onclick="event.stopPropagation(); toggleSubmit()"/>
+        <label for="consent" onclick="event.stopPropagation()">By checking this box, I consent to receive a call from Skyline Acquisition Group or its licensed partners at the number provided. I understand this is not a condition of purchase.</label>
+      </div>
+
+      <button class="submit-btn" id="btnSubmit" onclick="handleSubmit()" disabled>Submit — Get My Free Quote</button>
+    </div>
+
+    <!-- TIMER OVERLAY -->
+    <div class="timer-overlay" id="timerOverlay">
+      <div class="timer-ring-wrap">
+        <div class="timer-ring-glow"></div>
+        <div class="timer-ring">
+          <svg width="160" height="160" viewBox="0 0 160 160">
+            <defs>
+              <linearGradient id="skyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#38bdf8"/>
+                <stop offset="50%" stop-color="#0ea5e9"/>
+                <stop offset="100%" stop-color="#0284c7"/>
+              </linearGradient>
+            </defs>
+            <circle class="bg" cx="80" cy="80" r="70"/>
+            <circle class="track" cx="80" cy="80" r="70"/>
+            <circle class="progress" id="timerCircle" cx="80" cy="80" r="70"
+              stroke-dasharray="439.82" stroke-dashoffset="0"/>
+          </svg>
+          <div class="timer-seconds">
+            <div class="num" id="timerText">60</div>
+            <div class="unit">Seconds</div>
+          </div>
+        </div>
+      </div>
+      <div class="timer-title">Verifying Your Information</div>
+      <div class="timer-sub">Please stay on the line while we securely process and verify your details.</div>
+      <div class="timer-steps">
+        <div class="timer-step">
+          <div class="step-dot active" id="step1"></div>
+          <div class="step-label active" id="stepLabel1">Submitting</div>
+        </div>
+        <div class="step-line"><div class="fill" id="line1"></div></div>
+        <div class="timer-step">
+          <div class="step-dot" id="step2"></div>
+          <div class="step-label" id="stepLabel2">Verifying</div>
+        </div>
+        <div class="step-line"><div class="fill" id="line2"></div></div>
+        <div class="timer-step">
+          <div class="step-dot" id="step3"></div>
+          <div class="step-label" id="stepLabel3">Generating ID</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="success-msg" id="successMsg">
+      <div class="check">✓</div>
+      <h3>You're All Set!</h3>
+      <p>Lead verified and logged successfully.</p>
+      <div class="uuid-box" id="uuidDisplay"></div>
+      <div class="uuid-hint">Click UUID to select · Auto-logged with timestamp</div>
+      <button class="btn-reset" onclick="resetForm()">New Lead →</button>
+    </div>
+
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer">
+    <p><strong>Disclaimer:</strong> Skyline Acquisition Group is a privately owned marketing and lead generation agency. We are not a government agency, insurance provider, or direct lender. Our role is to connect consumers with licensed agents, providers, or service professionals who can help review available options, quotes, and potential benefits based on individual needs and eligibility.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2024 Skyline Acquisition Group &nbsp;|&nbsp; All Rights Reserved &nbsp;|&nbsp; Washington, D.C.</p>
+  </footer>
+
+</div>
+
+<script>
+// ── Phone formatting ──
+document.getElementById('phone').addEventListener('input', function(e) {
+  let v = e.target.value.replace(/\D/g,'');
+  if (v.length >= 10) v = v.slice(0,10);
+  if (v.length > 6) v = '(' + v.slice(0,3) + ') ' + v.slice(3,6) + '-' + v.slice(6);
+  else if (v.length > 3) v = '(' + v.slice(0,3) + ') ' + v.slice(3);
+  e.target.value = v;
+});
+
+// ── Zip digits only ──
+document.getElementById('zip').addEventListener('input', function(e) {
+  e.target.value = e.target.value.replace(/\D/g,'').slice(0,5);
+});
+
+// ── Consent toggle ──
+function toggleSubmit() {
+  const checked = document.getElementById('consent').checked;
+  document.getElementById('btnSubmit').disabled = !checked;
+}
+
+// ── UUID v4 generator ──
+function generateUUID() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+    const r = Math.random()*16|0;
+    return (c==='x' ? r : (r&0x3|0x8)).toString(16);
+  });
+}
+
+// ── Submit ──
+function handleSubmit() {
+  const fields = ['firstName','lastName','phone','zip','state','campaign'];
+  let valid = true;
+  fields.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el.value.trim()) {
+      el.style.borderColor = '#e53935';
+      el.style.boxShadow = '0 0 0 3px rgba(229,57,53,0.12)';
+      valid = false;
+      setTimeout(() => {
+        el.style.borderColor = '';
+        el.style.boxShadow = '';
+      }, 2000);
+    }
+  });
+  if (!valid) return;
+
+  const btn = document.getElementById('btnSubmit');
+  btn.disabled = true;
+
+  const overlay = document.getElementById('timerOverlay');
+  overlay.classList.add('active');
+
+  const circle = document.getElementById('timerCircle');
+  const text = document.getElementById('timerText');
+  const circumference = 2 * Math.PI * 70;
+  let remaining = 60;
+
+  // Reset steps
+  ['step1','step2','step3'].forEach(id => {
+    document.getElementById(id).className = 'step-dot';
+  });
+  ['stepLabel1','stepLabel2','stepLabel3'].forEach(id => {
+    document.getElementById(id).className = 'step-label';
+  });
+  ['line1','line2'].forEach(id => {
+    document.getElementById(id).className = 'fill';
+  });
+  document.getElementById('step1').classList.add('active');
+  document.getElementById('stepLabel1').classList.add('active');
+
+  const interval = setInterval(() => {
+    remaining--;
+    text.textContent = remaining;
+    const offset = circumference * (1 - remaining / 60);
+    circle.style.strokeDashoffset = offset;
+
+    // Step progression
+    if (remaining === 40) {
+      document.getElementById('step1').className = 'step-dot done';
+      document.getElementById('stepLabel1').className = 'step-label done';
+      document.getElementById('line1').classList.add('active');
+      document.getElementById('step2').classList.add('active');
+      document.getElementById('stepLabel2').classList.add('active');
+    }
+    if (remaining === 15) {
+      document.getElementById('step2').className = 'step-dot done';
+      document.getElementById('stepLabel2').className = 'step-label done';
+      document.getElementById('line2').classList.add('active');
+      document.getElementById('step3').classList.add('active');
+      document.getElementById('stepLabel3').classList.add('active');
+    }
+
+    if (remaining <= 0) {
+      clearInterval(interval);
+      document.getElementById('step3').className = 'step-dot done';
+      document.getElementById('stepLabel3').className = 'step-label done';
+      setTimeout(() => {
+        overlay.classList.remove('active');
+        showSuccess();
+      }, 500);
+    }
+  }, 1000);
+}
+
+// ── Success ──
+function showSuccess() {
+  const uuid = generateUUID();
+  document.getElementById('uuidDisplay').textContent = uuid;
+  document.getElementById('formContent').style.display = 'none';
+  document.getElementById('successMsg').style.display = 'block';
+
+  const leadData = {
+    firstName: document.getElementById('firstName').value.trim(),
+    lastName: document.getElementById('lastName').value.trim(),
+    phone: document.getElementById('phone').value.trim(),
+    zipcode: document.getElementById('zip').value.trim(),
+    state: document.getElementById('state').value,
+    campaign: document.getElementById('campaign').value,
+    uuid: uuid,
+    timestamp: new Date().toISOString()
+  };
+
+  console.log('📋 Lead Data:', leadData);
+
+  // Push to Google Sheet via GET request
+  var params = Object.entries(leadData).map(function(pair) {
+    return encodeURIComponent(pair[0]) + '=' + encodeURIComponent(pair[1]);
+  }).join('&');
+
+  var img = new Image();
+  img.src = 'https://script.google.com/macros/s/AKfycbxBk-HdbnGubZRQ3KP62QMUYy-SDqEZzuBR6ND3Gu-ziA984Isv4CZuVCqRGzV3Uyl1ww/exec?' + params;
+  img.onload = function() { console.log('✅ Data sent to sheet'); };
+  img.onerror = function() { console.log('✅ Data sent to sheet'); };
+}
+
+// ── Reset ──
+function resetForm() {
+  document.getElementById('successMsg').style.display = 'none';
+  document.getElementById('formContent').style.display = 'block';
+  document.getElementById('btnSubmit').disabled = false;
+  document.getElementById('firstName').value = '';
+  document.getElementById('lastName').value = '';
+  document.getElementById('phone').value = '';
+  document.getElementById('zip').value = '';
+  document.getElementById('state').selectedIndex = 0;
+  document.getElementById('state').classList.remove('filled');
+  document.getElementById('campaign').selectedIndex = 0;
+  document.getElementById('campaign').classList.remove('filled');
+  document.getElementById('consent').checked = false;
+  document.getElementById('btnSubmit').disabled = true;
+
+  const circle = document.getElementById('timerCircle');
+  circle.style.strokeDashoffset = 0;
+  document.getElementById('timerText').textContent = '60';
+}
+</script>
+</body>
+</html>
